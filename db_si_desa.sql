@@ -9,7 +9,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     nama_lengkap VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    level ENUM('admin', 'sekretaris', 'kepala_desa') NOT NULL,
+    level ENUM('admin', 'sekretaris', 'kepala_desa','bendahara') NOT NULL,
     is_active TINYINT(1) DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -117,6 +117,15 @@ CREATE TABLE surat_keterangan (
     FOREIGN KEY (sekretaris_id) REFERENCES users(id),
     FOREIGN KEY (kepala_desa_id) REFERENCES users(id)
 );
+
+CREATE TABLE keuangan (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    jenis TEXT NOT NULL CHECK(jenis IN ('pemasukan', 'pengeluaran')),
+    jumlah INTEGER NOT NULL CHECK(jumlah >= 0),
+    tanggal TEXT NOT NULL, -- Gunakan format ISO 8601: 'YYYY-MM-DD'
+    deskripsi TEXT
+);
+
 
 -- -- Tabel Log Aktivitas
 -- CREATE TABLE log_aktivitas (

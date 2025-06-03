@@ -27,7 +27,7 @@ class UserModel extends Model
       $userId = $this->db->insertID();
 
       // 3 level user ditambahin ke pejabat_desa
-      if (in_array($data['level'], ['admin', 'sekretaris', 'kepala_desa'])) {
+      if (in_array($data['level'], ['admin', 'sekretaris', 'kepala_desa','bendahara'])) {
          $pejabatData = [
             'user_id' => $userId,
             'nama_lengkap' => $data['nama_lengkap'],
