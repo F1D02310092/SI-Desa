@@ -1,7 +1,3 @@
--- Database: db_si_desa
--- PHP versi 8.2.12
--- Server version: 11.4.3-MariaDB
-
 -- Tabel Users untuk semua level user
 CREATE TABLE users (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -119,12 +115,13 @@ CREATE TABLE surat_keterangan (
 );
 
 CREATE TABLE keuangan (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    jenis TEXT NOT NULL CHECK(jenis IN ('pemasukan', 'pengeluaran')),
-    jumlah INTEGER NOT NULL CHECK(jumlah >= 0),
-    tanggal TEXT NOT NULL, -- Gunakan format ISO 8601: 'YYYY-MM-DD'
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    jenis ENUM('pemasukan', 'pengeluaran') NOT NULL,
+    jumlah INT(11) NOT NULL,
+    tanggal DATE NOT NULL, -- format ISO 8601: 'YYYY-MM-DD'
     deskripsi TEXT
 );
+
 
 
 -- -- Tabel Log Aktivitas
@@ -175,4 +172,3 @@ ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIME
 -- Alter table surat_keterangan
 ALTER TABLE surat_keterangan DROP COLUMN file_path;
 ALTER TABLE surat_keterangan DROP COLUMN catatan;
-

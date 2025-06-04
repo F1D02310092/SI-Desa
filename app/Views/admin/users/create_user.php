@@ -89,6 +89,7 @@
                            <option value="admin">Admin</option>
                            <option value="sekretaris">Sekretaris</option>
                            <option value="kepala_desa">Kepala Desa</option>
+                           <option value="bendahara">Bendahara</option>
                         </select>
                      </div>
 

@@ -44,7 +44,7 @@ class UserController extends BaseController
          'password' => 'required|min_length[6]',
          'nama_lengkap' => 'required',
          'email' => 'required|valid_email|is_unique[users.email]',
-         'level' => 'required|in_list[admin,sekretaris,kepala_desa]'
+         'level' => 'required|in_list[admin,sekretaris,kepala_desa,bendahara]'
       ];
 
       if (!$this->validate($rules)) {
@@ -77,7 +77,8 @@ class UserController extends BaseController
       $jabatanMap = [
          'admin' => 'Administrator Sistem',
          'sekretaris' => 'Sekretaris Desa',
-         'kepala_desa' => 'Kepala Desa'
+         'kepala_desa' => 'Kepala Desa',
+         'bendahara' => 'bendahara'
       ];
 
       $dataPejabat = [
