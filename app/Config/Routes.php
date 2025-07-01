@@ -109,4 +109,5 @@ $routes->group('kepala-desa', ['filter' => 'auth:kepala_desa'], function ($route
 $routes->group('bendahara', ['filter' => 'auth:bendahara'], function ($routes) {
    // Dashboard
    $routes->get('dashboard', 'Bendahara\Dashboard::index', ['as' => 'bendahara.dashboard']);
+   $routes->get('keuangan', 'Bendahara\Keuangan::index', ['as' => 'bendahara.keuangan']);
 });
